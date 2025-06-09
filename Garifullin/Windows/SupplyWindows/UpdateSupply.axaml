@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="using:Garifullin"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Garifullin.UpdateSupply"
+		x:DataType="local:UpdateSupply"
+        Title="UpdateSupply">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<TextBox Name="pricebox" Margin="10" Grid.Row="1" Watermark="Цена"></TextBox>
+		<ComboBox Name="agentbox" SelectedIndex="0" Margin="10" Grid.Row="2" Width="200" ItemsSource="{Binding agents}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding Id }"/>
+						<TextBlock Text=" "/>
+						<TextBlock Text="{Binding FirstName}"/>
+						<TextBlock Text=" "/>
+						<TextBlock Text="{Binding DealShare}"/>
+						<TextBlock Text="%"/>
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<ComboBox Name="clientbox" Margin="10" Grid.Row="3" Width="200" ItemsSource="{Binding clients}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding Id }"/>
+						<TextBlock Text=" "/>
+						<TextBlock Text="{Binding FirstName}"/>
+						<TextBlock Text=" "/>
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<ComboBox Name="estatebox" Margin="10" Grid.Row="4" Width="200" ItemsSource="{Binding estates}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding Id }"/>
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<StackPanel Grid.Row="7" HorizontalAlignment="Center">
+			<Button FontSize="18" Width="400" Margin="20,0,0,0" HorizontalContentAlignment="Center" Click="Button_Click" >Изменить</Button>
+			<Button FontSize="18" Width="400" Margin="20" HorizontalContentAlignment="Center" Click="CancelButton" >Отмена</Button>
+		</StackPanel>
+	</Grid>
+</Window>

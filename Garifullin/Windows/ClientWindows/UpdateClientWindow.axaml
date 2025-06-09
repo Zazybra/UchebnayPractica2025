@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Garifullin.UpdateClientWindow"
+        Title="UpdateClientWindow">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<TextBox Name="namebox" Margin="10" Grid.Row="1" Watermark="Имя"></TextBox>
+		<TextBox Name="familybox" Margin="10" Grid.Row="2" Watermark="Фамилия"></TextBox>
+		<TextBox Name="dadbox" Margin="10" Grid.Row="3" Watermark="Отчество"></TextBox>
+		<TextBox Name="phonebox" Margin="10" Grid.Row="4" Watermark="Телефон"></TextBox>
+		<TextBox Name="mailbox" Margin="10" Grid.Row="5" Watermark="Почта"></TextBox>
+		<StackPanel Grid.Row="7" HorizontalAlignment="Center">
+			<Button FontSize="18" Width="400" Margin="20,0,0,0" HorizontalContentAlignment="Center" Click="Button_Click_1">Изменить</Button>
+			<Button FontSize="18" Width="400" Margin="20" HorizontalContentAlignment="Center" Click="Button_Click">Отмена</Button>
+		</StackPanel>
+	</Grid>
+</Window>

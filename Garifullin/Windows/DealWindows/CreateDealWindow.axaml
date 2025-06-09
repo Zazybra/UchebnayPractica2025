@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		xmlns:local="using:Garifullin"
+        x:Class="Garifullin.CreateDealWindow"
+		x:DataType="local:CreateDealWindow"
+        Title="CreateDealWindow">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<TextBlock Grid.Row="1" FontSize="20" Margin="10">Спрос</TextBlock>
+		<ComboBox Name="demandbox" SelectedIndex="0" Margin="10" Grid.Row="2" Width="200" ItemsSource="{Binding demandadresses}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding Id}"></TextBlock>
+						<TextBlock Text=" "></TextBlock>
+						<TextBlock Text="{Binding Address}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<TextBlock Grid.Row="3" FontSize="20" Margin="10">Предложение</TextBlock>
+		<ComboBox Name="supplybox" Margin="10" Grid.Row="4" Width="200" ItemsSource="{Binding suppliesadresses}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding Id}"></TextBlock>
+						<TextBlock Text=" "></TextBlock>
+						<TextBlock Text="{Binding Address}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<StackPanel Grid.Row="7" HorizontalAlignment="Center">
+			<Button FontSize="18" Width="400" Margin="20,0,0,0" HorizontalContentAlignment="Center" Click="Button_Click" >Добавить</Button>
+			<Button FontSize="18" Width="400" Margin="20" HorizontalContentAlignment="Center" Click="CancelClick" >Отмена</Button>
+		</StackPanel>
+	</Grid>
+</Window>

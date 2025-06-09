@@ -1,0 +1,329 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:Garifullin"
+		mc:Ignorable="d" Width="1000" Height="550"
+        x:Class="Garifullin.MainWindow"
+        Title="Garifullin"
+		x:DataType="local:MainWindow" >
+	<TabControl>
+		<TabItem Header="Клиент">
+			<Grid Margin="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30"/>
+					<RowDefinition/>
+					<RowDefinition Height="40"/>
+				</Grid.RowDefinitions>
+				<StackPanel Orientation="Horizontal">
+					<TextBox Width="200" HorizontalAlignment="Left" Watermark="Поиск" TextChanged="ClientSearchBox_TextChanged"></TextBox>
+				</StackPanel>
+				<DataGrid Name="ClientGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding Clients}"  BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+						<DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+						<DataGridTextColumn Header="Middle Name"  Binding="{Binding MiddleName}"/>
+						<DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+						<DataGridTextColumn Header="Phone"  Binding="{Binding Phone}"/>
+						<DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+					</DataGrid.Columns>
+				</DataGrid>
+				<StackPanel Margin="0,5,0,0" Orientation="Horizontal" Grid.Row="2">
+					<Button Click="Button_Click">Добавить</Button>
+					<Button Margin="5,0,0,0" Click="UpdateClient">Изменить</Button>
+					<Button Margin="5,0,0,0" Click="DeleteClient">Удалить</Button>
+				</StackPanel>
+			</Grid>
+		</TabItem>
+		<TabItem Header="Риелтор">
+			<Grid Margin="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30"/>
+					<RowDefinition/>
+					<RowDefinition Height="40"/>
+				</Grid.RowDefinitions>
+				<StackPanel Orientation="Horizontal">
+					<TextBox Width="200" HorizontalAlignment="Left" Watermark="Поиск" TextChanged="AgentSearchBox_TextChanged"></TextBox>
+				</StackPanel>
+				<DataGrid Name="AgentGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding Rieltors}"
+			AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+						<DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+						<DataGridTextColumn Header="Middle Name"  Binding="{Binding MiddleName}"/>
+						<DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+						<DataGridTextColumn Header="Dealshare"  Binding="{Binding DealShare}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+				<StackPanel Margin="0,5,0,0" Orientation="Horizontal" Grid.Row="2">
+					<Button Click="CreateAgent">Добавить</Button>
+					<Button Margin="5,0,0,0" Click="UpdateAgent">Изменить</Button>
+					<Button Margin="5,0,0,0" Click="DeleteAgent">Удалить</Button>
+				</StackPanel>
+			</Grid>
+		</TabItem>
+		<TabItem Header="Недвижимость">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition Height="50"/>
+				</Grid.RowDefinitions>
+			<TabControl Name="EstateTab">
+				<TabItem Header="Вся недвижимость" FontSize="18">
+					<Grid Margin="10">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="10"/>
+							<RowDefinition/>
+							<RowDefinition Height="40"/>
+						</Grid.RowDefinitions>
+						<TextBox Width="200" HorizontalAlignment="Left" Watermark="Поиск" TextChanged="EstateSearchBox_TextChanged"></TextBox>
+					<DataGrid Name="MainGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding Estates}"
+			AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+							<DataGridTextColumn Header="City" Binding="{Binding AddressCity}" />
+							<DataGridTextColumn Header="Street"  Binding="{Binding AddressStreet}"/>
+							<DataGridTextColumn Header="House" Binding="{Binding AddressHouse}" />
+							<DataGridTextColumn Header="Number"  Binding="{Binding AddressNumber}"/>
+							<DataGridTextColumn Header="Latitude" Binding="{Binding CoordinateLatitude}" />
+							<DataGridTextColumn Header="Longitude"  Binding="{Binding CoordinateLongitude}"/>
+							<DataGridTextColumn Header="DistrictId"  Binding="{Binding DistrictId}"/>
+						</DataGrid.Columns>
+					</DataGrid>
+					</Grid>
+				</TabItem>
+				<TabItem Header="Квартиры" FontSize="18">
+					<Grid Margin="10">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="10"/>
+							<RowDefinition/>
+							<RowDefinition Height="40"/>
+						</Grid.RowDefinitions>
+						<DataGrid Name="ApartmentGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding Apartments}"
+				AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+							<DataGrid.Columns>
+								<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+								<DataGridTextColumn Header="City" Binding="{Binding AddressCity}" />
+								<DataGridTextColumn Header="Street"  Binding="{Binding AddressStreet}"/>
+								<DataGridTextColumn Header="House" Binding="{Binding AddressHouse}" />
+								<DataGridTextColumn Header="Number"  Binding="{Binding AddressNumber}"/>
+								<DataGridTextColumn Header="TotalArea" Binding="{Binding TotalArea}" />
+								<DataGridTextColumn Header="Rooms"  Binding="{Binding Rooms}"/>
+								<DataGridTextColumn Header="Floor"  Binding="{Binding Floor}"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</TabItem>
+				<TabItem Header="Дома" FontSize="18">
+					<Grid Margin="10">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="10"/>
+							<RowDefinition/>
+							<RowDefinition Height="40"/>
+						</Grid.RowDefinitions>
+						<DataGrid Name="HouseGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding Houses}"
+				AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+							<DataGrid.Columns>
+								<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+								<DataGridTextColumn Header="City" Binding="{Binding AddressCity}" />
+								<DataGridTextColumn Header="Street"  Binding="{Binding AddressStreet}"/>
+								<DataGridTextColumn Header="House" Binding="{Binding AddressHouse}" />
+								<DataGridTextColumn Header="Number"  Binding="{Binding AddressNumber}"/>
+								<DataGridTextColumn Header="TotalArea" Binding="{Binding TotalArea}" />
+								<DataGridTextColumn Header="Rooms"  Binding="{Binding Rooms}"/>
+								<DataGridTextColumn Header="Floors"  Binding="{Binding TotalFloors}"/>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</TabItem>
+				<TabItem Header="Земля" FontSize="18">
+					<Grid Margin="10">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="10"/>
+							<RowDefinition/>
+							<RowDefinition Height="40"/>
+						</Grid.RowDefinitions>
+						<DataGrid Name="LandGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding Lands}"
+				AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+							<DataGrid.Columns>
+								<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+								<DataGridTextColumn Header="City" Binding="{Binding AddressCity}" />
+								<DataGridTextColumn Header="Street"  Binding="{Binding AddressStreet}"/>
+								<DataGridTextColumn Header="House" Binding="{Binding AddressHouse}" />
+								<DataGridTextColumn Header="Number"  Binding="{Binding AddressNumber}"/>
+								<DataGridTextColumn Header="TotalArea" Binding="{Binding TotalArea}" />
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+				</TabItem>
+			</TabControl>
+				<StackPanel  Orientation="Horizontal" Grid.Row="2">
+					<Button Click="CreateEstate">Добавить</Button>
+					<Button Margin="5,0,0,0" Click="UpdateEstate">Изменить</Button>
+					<Button Margin="5,0,0,0" Click="DeleteEstate">Удалить</Button>
+				</StackPanel>
+		</Grid>
+		</TabItem>
+		<TabItem Header="Предложения">
+			<Grid Margin="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="10"/>
+					<RowDefinition/>
+					<RowDefinition Height="40"/>
+				</Grid.RowDefinitions>
+				<DataGrid Name="SupplyGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding Supplies}"
+		AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+						<DataGridTextColumn Header="Price" Binding="{Binding Price}" />
+						<DataGridTextColumn Header="AgentId"  Binding="{Binding AgentId}"/>
+						<DataGridTextColumn Header="ClientId" Binding="{Binding ClientId}" />
+						<DataGridTextColumn Header="RealEstateId"  Binding="{Binding RealEstateId}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+				<StackPanel Margin="0,5,0,0" Orientation="Horizontal" Grid.Row="2">
+					<Button Click="CreateSupply">Добавить</Button>
+					<Button Margin="5,0,0,0" Click="UpdateSupply">Изменить</Button>
+					<Button Margin="5,0,0,0" Click="DeleteSupply">Удалить</Button>
+				</StackPanel>
+			</Grid>
+		</TabItem>
+		<TabItem Header="Спрос">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition Height="50"/>
+				</Grid.RowDefinitions>
+				<TabControl Name="DemandTab">
+					<TabItem Header="Вся недвижимость" FontSize="18">
+						<Grid Margin="10">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="10"/>
+								<RowDefinition/>
+								<RowDefinition Height="40"/>
+							</Grid.RowDefinitions>
+							<DataGrid Name="MainDemandGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding Demands}"
+					AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+								<DataGrid.Columns>
+									<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+									<DataGridTextColumn Header="City" Binding="{Binding AddressCity}" />
+									<DataGridTextColumn Header="Street"  Binding="{Binding AddressStreet}"/>
+									<DataGridTextColumn Header="House" Binding="{Binding AddressHouse}" />
+									<DataGridTextColumn Header="Number"  Binding="{Binding AddressNumber}"/>
+									<DataGridTextColumn Header="MinPrice" Binding="{Binding MinPrice}" />
+									<DataGridTextColumn Header="MaxPrice"  Binding="{Binding MaxPrice}"/>
+									<DataGridTextColumn Header="ClientId" Binding="{Binding ClientId}" />
+									<DataGridTextColumn Header="AgentId"  Binding="{Binding AgentId}"/>
+									<DataGridTextColumn Header="TypeId" Binding="{Binding TypeId}" />
+								</DataGrid.Columns>
+							</DataGrid>
+						</Grid>
+					</TabItem>
+					<TabItem Header="Квартиры" FontSize="18">
+						<Grid Margin="10">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="10"/>
+								<RowDefinition/>
+								<RowDefinition Height="40"/>
+							</Grid.RowDefinitions>
+							<DataGrid Name="ApartmentDemandGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding ApartmentsDemands}"
+					AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+								<DataGrid.Columns>
+									<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+									<DataGridTextColumn Header="City" Binding="{Binding AddressCity}" />
+									<DataGridTextColumn Header="Street"  Binding="{Binding AddressStreet}"/>
+									<DataGridTextColumn Header="House" Binding="{Binding AddressHouse}" />
+									<DataGridTextColumn Header="Number"  Binding="{Binding AddressNumber}"/>
+									<DataGridTextColumn Header="MinPrice" Binding="{Binding MinPrice}" />
+									<DataGridTextColumn Header="MaxPrice"  Binding="{Binding MaxPrice}"/>
+									<DataGridTextColumn Header="MinArea" Binding="{Binding MinArea}" />
+									<DataGridTextColumn Header="MaxArea"  Binding="{Binding MaxArea}"/>
+									<DataGridTextColumn Header="MinRooms" Binding="{Binding MinRooms}" />
+									<DataGridTextColumn Header="MaxRooms" Binding="{Binding MaxRooms}" />
+									<DataGridTextColumn Header="MinFloor"  Binding="{Binding MinFloor}"/>
+									<DataGridTextColumn Header="MaxFloor" Binding="{Binding MaxFloor}" />
+								</DataGrid.Columns>
+							</DataGrid>
+						</Grid>
+					</TabItem>
+					<TabItem Header="Дома" FontSize="18">
+						<Grid Margin="10">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="10"/>
+								<RowDefinition/>
+								<RowDefinition Height="40"/>
+							</Grid.RowDefinitions>
+							<DataGrid Name="HouseDemandGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding HousesDemands}"
+					AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+								<DataGrid.Columns>
+									<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+									<DataGridTextColumn Header="City" Binding="{Binding AddressCity}" />
+									<DataGridTextColumn Header="Street"  Binding="{Binding AddressStreet}"/>
+									<DataGridTextColumn Header="House" Binding="{Binding AddressHouse}" />
+									<DataGridTextColumn Header="Number"  Binding="{Binding AddressNumber}"/>
+									<DataGridTextColumn Header="MinPrice" Binding="{Binding MinPrice}" />
+									<DataGridTextColumn Header="MaxPrice"  Binding="{Binding MaxPrice}"/>
+									<DataGridTextColumn Header="MinArea" Binding="{Binding MinArea}" />
+									<DataGridTextColumn Header="MaxArea"  Binding="{Binding MaxArea}"/>
+									<DataGridTextColumn Header="MinRooms" Binding="{Binding MinRooms}" />
+									<DataGridTextColumn Header="MaxRooms" Binding="{Binding MaxRooms}" />
+									<DataGridTextColumn Header="MinFloor"  Binding="{Binding MinFloor}"/>
+									<DataGridTextColumn Header="MaxFloor" Binding="{Binding MaxFloor}" />
+								</DataGrid.Columns>
+							</DataGrid>
+						</Grid>
+					</TabItem>
+					<TabItem Header="Земля" FontSize="18">
+						<Grid Margin="10">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="10"/>
+								<RowDefinition/>
+								<RowDefinition Height="40"/>
+							</Grid.RowDefinitions>
+							<DataGrid Name="LandDemandGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding LandsDemands}"
+					AutoGenerateColumns="False" BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+								<DataGrid.Columns>
+									<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+									<DataGridTextColumn Header="City" Binding="{Binding AddressCity}" />
+									<DataGridTextColumn Header="Street"  Binding="{Binding AddressStreet}"/>
+									<DataGridTextColumn Header="House" Binding="{Binding AddressHouse}" />
+									<DataGridTextColumn Header="Number"  Binding="{Binding AddressNumber}"/>
+									<DataGridTextColumn Header="MinPrice" Binding="{Binding MinPrice}" />
+									<DataGridTextColumn Header="MaxPrice"  Binding="{Binding MaxPrice}"/>
+									<DataGridTextColumn Header="MinArea" Binding="{Binding MinArea}" />
+									<DataGridTextColumn Header="MaxArea"  Binding="{Binding MaxArea}"/>
+								</DataGrid.Columns>
+							</DataGrid>
+						</Grid>
+					</TabItem>
+				</TabControl>
+				<StackPanel  Orientation="Horizontal" Grid.Row="2">
+					<Button Click="CreateDemand">Добавить</Button>
+					<Button Margin="5,0,0,0" Click="UpdateDemand">Изменить</Button>
+					<Button Margin="5,0,0,0" Click="DeleteDemand">Удалить</Button>
+				</StackPanel>
+			</Grid>
+		</TabItem>
+		<TabItem Header="Сделка">
+			<Grid Margin="10">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="5"/>
+					<RowDefinition/>
+					<RowDefinition Height="40"/>
+				</Grid.RowDefinitions>
+				<DataGrid Name="DealGrid" Grid.Row="1" Margin="0,15,0,0" ItemsSource="{Binding deallist}"  BorderThickness="1" BorderBrush="Gray" IsReadOnly="True">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="ID"  Binding="{Binding Id}"/>
+						<DataGridTextColumn Header="DemandId" Binding="{Binding demandAddress}" />
+						<DataGridTextColumn Header="SupplyId"  Binding="{Binding RealEstateAddress}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+				<StackPanel Margin="0,5,0,0" Orientation="Horizontal" Grid.Row="2">
+					<Button Click="CreateDeal">Добавить</Button>
+					<Button Margin="5,0,0,0" Click="UpdateDeal">Изменить</Button>
+					<Button Margin="5,0,0,0" Click="DeleatDeal">Удалить</Button>
+				</StackPanel>
+			</Grid>
+		</TabItem>
+	</TabControl>
+</Window>

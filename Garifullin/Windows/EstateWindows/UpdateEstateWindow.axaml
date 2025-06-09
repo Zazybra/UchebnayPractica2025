@@ -1,0 +1,71 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="using:Garifullin"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		x:DataType="local:UpdateEstateWindow"
+        x:Class="Garifullin.UpdateEstateWindow"
+        Title="UpdateEstateWindow">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<TextBox Name="citybox" Margin="10" Grid.Row="1" Watermark="Город"></TextBox>
+		<TextBox Name="streetbox" Margin="10" Grid.Row="2" Watermark="Улица"></TextBox>
+		<TextBox Name="housebox" Margin="10" Grid.Row="3" Watermark="Дом"></TextBox>
+		<TextBox Name="numberbox" Margin="10" Grid.Row="4" Watermark="Номер дома"></TextBox>
+		<TextBox Name="latitudebox" Margin="10" Grid.Row="5" Watermark="Ширина"></TextBox>
+		<TextBox Name="longitudebox" Margin="10" Grid.Row="6" Watermark="Долгота"></TextBox>
+		<StackPanel Orientation="Horizontal" Grid.Row="7">
+			<ComboBox Name="combik"  SelectedIndex="0" Width="150" Margin="10" IsEnabled="False">
+				<ComboBox.Items>
+					<ComboBoxItem>Квартира</ComboBoxItem>
+					<ComboBoxItem>Дом</ComboBoxItem>
+					<ComboBoxItem>Земля</ComboBoxItem>
+				</ComboBox.Items>
+			</ComboBox>
+			<ComboBox Name="districtsbox" ItemsSource="{Binding districts}" Width="150" Margin="10">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name, FallbackValue='Без района'}"/>
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+		</StackPanel>
+		<TextBox Name="totalareabox" Margin="10,25,10,10" Grid.Row="8" Watermark="Площадь"></TextBox>
+		<TextBox Name="roomsbox" Margin="10" Grid.Row="9" Watermark="Комнаты"></TextBox>
+		<TextBox Name="floorbox" Margin="10" Grid.Row="10" Watermark="Этаж"></TextBox>
+		<TextBox Name="totalfloorsbox" Margin="10" Grid.Row="10" Watermark="Кол-во этажей" IsVisible="False"></TextBox>
+		<StackPanel Grid.Row="15" HorizontalAlignment="Center" Orientation="Horizontal">
+			<Button FontSize="18" Width="300" Height="35" Margin="10"  HorizontalContentAlignment="Center" Click="Button_Click_1">Изменить</Button>
+			<Button FontSize="18" Width="300" Height="35" Margin="10" HorizontalContentAlignment="Center" Click="CancelClick">Отмена</Button>
+		</StackPanel>
+	</Grid>
+</Window>
